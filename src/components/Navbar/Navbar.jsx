@@ -10,7 +10,7 @@ const Navbar = () => {
   return (
     <div className='navbar'>
       <div className="navbar-left">
-        <img src={ logo } alt="Netflix Logo" />
+        <img src={logo} alt="Netflix Logo" />
         <ul>
           <li>Home</li>
           <li>TV Shows</li>
@@ -21,12 +21,15 @@ const Navbar = () => {
         </ul>
       </div>
       <div className="navbar-right">
-        <img src={ search_icon } alt="search icon" className='icons'/>
+        <img src={search_icon} alt="search icon" className='icons' />
         <p>Children</p>
-        <img src={ bell_icon } alt="search icon" className='icons'/>
-        <div className="navbar-right">
-        <img src={ profile_img } alt="profile image" className='profile'/>
-        <img src={ caret_icon } alt="caret icon"/>
+        <img src={bell_icon} alt="search icon" className='icons' />
+        <div className="navbar-profile">
+          <img src={profile_img} alt="profile image" className='profile' />
+          <img src={caret_icon} alt="caret icon" />
+          <div className="dropdown">
+            <p>Sign Out</p>
+          </div>
         </div>
       </div>
     </div>
