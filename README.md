@@ -9,3 +9,6 @@
 **Public Folder**: 
 - Here the FavIcon & Hero Banner image
 
+## Folder Structure:
+
+
