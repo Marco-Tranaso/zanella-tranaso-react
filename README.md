@@ -37,3 +37,4 @@ zanella-tranaso-react/
 └── vite.config.js              # Vite configuration file
 ```
 
+## Pagine:
