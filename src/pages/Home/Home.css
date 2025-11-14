@@ -4,8 +4,14 @@
 
 .banner-img {
     width: 100%;
-    mask-image: linear-gradient(to right, transparent, black 75%);
-    -weblit-mask-image: linear-gradient(to right, transparent, black 75%);
+    mask-image:
+        linear-gradient(to bottom, transparent, black 15%),
+        linear-gradient(to right, transparent, black 65%);
+    -webkit-mask-image:
+        linear-gradient(to bottom, transparent, black 15%),
+        linear-gradient(to right, transparent, black 65%);
+    -webkit-mask-composite: source-in;
+    mask-composite: intersect;
 }
 
 .hero-caption {
@@ -64,4 +70,9 @@
 .hero-btns .btn.dark-btn:hover {
     background: #6d6d6e66;
 
+}
+
+.more-cards {
+    padding-left: 6%;
+    
 }
