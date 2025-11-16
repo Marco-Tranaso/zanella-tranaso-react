@@ -14,3 +14,15 @@
     width: 30px;
     cursor: pointer;
 } 
+
+
+.footer ul {
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    list-style: none;
+}
+
+.copyright-text{
+    color: gray;
+    font-size: 14px;
+}
