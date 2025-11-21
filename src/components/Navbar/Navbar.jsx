@@ -1,31 +1,31 @@
 import React, { useEffect, useRef } from 'react'
 import './Navbar.css'
 import logo from '../../assets/logo.png'
-import search_icon from '../../assets/search_icon.svg'
 import bell_icon from '../../assets/bell_icon.svg'
 import profile_img from '../../assets/profile_img.png'
 import caret_icon from '../../assets/caret_icon.svg'
 import { Link } from 'react-router-dom'
+import SearchBar from '../SearchBar/SearchBar'   
 
 const Navbar = () => {
 
   const navRef = useRef();
-  useEffect(()=>{
-    window.addEventListener('scroll', ()=>{
-      if(window.scrollY >= 80){
+  
+  useEffect(() => {
+    window.addEventListener('scroll', () => {
+      if (window.scrollY >= 80) {
         navRef.current.classList.add('nav-dark')
-      }else{
+      } else {
         navRef.current.classList.remove('nav-dark')
       }
     })
-
-  },[])
+  }, [])
 
   return (
     <div ref={navRef} className='navbar'>
       <div className="navbar-left">
         <Link to='/'>
-        <img src={logo} alt="Netflix Logo" />
+          <img src={logo} alt="Netflix Logo" />
         </Link>
         <ul>
           <li>Home</li>
@@ -37,15 +37,16 @@ const Navbar = () => {
         </ul>
       </div>
       <div className="navbar-right">
-        <img src={search_icon} alt="search icon" className='icons' />
+        <SearchBar />
         <p>Children</p>
-        <img src={bell_icon} alt="search icon" className='icons' />
+        <img src={bell_icon} alt="bell icon" className='icons' />
+
         <div className="navbar-profile">
           <img src={profile_img} alt="profile image" className='profile' />
           <img src={caret_icon} alt="caret icon" />
           <div className="dropdown">
             <Link to='/login'>
-            <p>Sign Out</p>
+              <p>Sign Out</p>
             </Link>
           </div>
         </div>
