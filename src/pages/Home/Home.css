@@ -74,5 +74,61 @@
 
 .more-cards {
     padding-left: 6%;
-    
+
+}
+
+@media (max-width: 1024px) {
+    .hero-caption .title-cards {
+        display: none;
+    }
+
+    .hero-btns {
+        margin-bottom: 30px;
+    }
+
+    .caption-img {
+        margin-bottom: 10px;
+        width: 200px;
+    }
+}
+
+@media (max-width: 800px) {
+    .hero-caption {
+        padding-left: 4%;
+    }
+
+    .caption-img {
+        margin-bottom: 10px;
+        width: 200px;
+    }
+
+    .hero-caption p {
+        font-size: 12px;
+        margin-bottom: 10px;
+    }
+
+    .hero-btns .btn img {
+        width: 20px;
+    }
+
+    .nore-cards {
+        padding-left: 4%;
+    }
+}
+
+@media (max-width: 567px) {
+    .caption-img {
+        width: 120px;
+    }
+
+    .hero-btns .btn img {
+        width: 15px;
+    }
+
+    .hero-btns .btn {
+        padding: 4px 10px;
+        gap: 5px;
+        font-size: 10px
+    }
+
 }
