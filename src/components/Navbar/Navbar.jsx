@@ -30,7 +30,9 @@ const Navbar = () => {
         <ul>
           <li>Home</li>
           <li>TV Shows</li>
-          <li>Movies</li>
+          <Link to='/movies'>
+            <li>Movies</li>
+          </Link>
           <li>New & Popular</li>
           <li>My List</li>
           <li>Browse by Languages</li>
