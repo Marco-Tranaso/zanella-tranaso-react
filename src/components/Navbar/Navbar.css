@@ -29,6 +29,8 @@
 
 .navbar-left ul li {
     cursor: pointer;
+    text-decoration: none;
+    color: white;
 }
 
 .navbar-right {
