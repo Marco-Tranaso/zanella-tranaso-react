@@ -21,7 +21,7 @@ const TitleCards = ({ title, category }) => {
     cardsRef.current.scrollLeft += event.deltaY;
   }
 
-  // Carica i preferiti dal localStorage
+
   useEffect(() => {
     const savedFavorites = localStorage.getItem('netflixFavorites')
     if (savedFavorites) {
@@ -29,7 +29,6 @@ const TitleCards = ({ title, category }) => {
     }
   }, [])
 
-  // Aggiungi/rimuovi dai preferiti
   const toggleFavorite = (e, movie) => {
     e.preventDefault()
     e.stopPropagation()
