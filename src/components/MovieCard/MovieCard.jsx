@@ -48,7 +48,6 @@ const MovieCard = ({ movie, showNewBadge = false }) => {
         return ''
     }
 
-    // Controlla se il film è uscito negli ultimi 30 giorni
     const isNew = () => {
         if (!movie.release_date) return false
         const releaseDate = new Date(movie.release_date)
