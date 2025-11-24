@@ -1,15 +1,15 @@
-import React, { useEffect, useState } from 'react';
-import './Movies.css';
-import MovieCard from '../../components/MovieCard/MovieCard';
-import Navbar from '../../components/Navbar/Navbar';
-import Footer from '../../components/Footer/Footer';
+import React, { useState, useEffect } from 'react'
+import './Movies.css'
+import MovieCard from '../../components/MovieCard/MovieCard'
+import Navbar from '../../components/Navbar/Navbar'
+import Footer from '../../components/Footer/Footer'
 
 const Movies = () => {
-
-    const [movies, setMovies] = useState([]);
-    const [page, setPage] = useState(1);
-    const [loading, setLoading] = useState(false);
-    const [hasMore, setHasMore] = useState(true);
+    const [movies, setMovies] = useState([])
+    const [loading, setLoading] = useState(true)
+    const [selectedCategory, setSelectedCategory] = useState('popular')
+    const [page, setPage] = useState(1)
+    const [hasMore, setHasMore] = useState(true)
 
     const options = {
         method: 'GET',
@@ -17,95 +17,113 @@ const Movies = () => {
             accept: 'application/json',
             Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIxNWEzZTNkYjliY2FmMDcyMmI1ZGY1NTcxZWY2MTMyYiIsIm5iZiI6MTc2MzI5MzA4MC41MTUsInN1YiI6IjY5MTliNzk4Y2VjZmNmNGM3ZTlhZTVlMyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.E1RjqoqbYcSgsER6kvV2DC7HRr3wbLgvnZoExG-902I'
         }
-    };
+    }
 
-    // 💡 MODIFICA: La funzione usa AbortController e gestisce l'aggiunta/reset
-    async function getMovies(pageNumber, reset = false, signal = null) {
-        setLoading(true);
+    const categories = [
+        { id: 'popular', name: 'Popolari', endpoint: 'popular' },
+        { id: 'top_rated', name: 'Più Votati', endpoint: 'top_rated' },
+        { id: 'now_playing', name: 'Al Cinema', endpoint: 'now_playing' },
+        { id: 'upcoming', name: 'In Arrivo', endpoint: 'upcoming' }
+    ]
 
+    useEffect(() => {
+        setMovies([])
+        setPage(1)
+        setHasMore(true)
+        fetchMovies(1, selectedCategory)
+    }, [selectedCategory])
+
+    const fetchMovies = async (pageNum, category) => {
+        setLoading(true)
         try {
-            // Usa il signal di abort se fornito
-            const res = await fetch(`https://api.themoviedb.org/3/discover/movie?page=${pageNumber}`, { ...options, signal });
-            const data = await res.json();
-
-            // Aggiorna lo stato dei film: se 'reset' è true, sostituisci; altrimenti aggiungi.
-            setMovies(prevMovies =>
-                reset ? (data.results || []) : [...prevMovies, ...(data.results || [])]
-            );
-
-            if (data.page >= data.total_pages) {
-                setHasMore(false);
+            const response = await fetch(
+                `https://api.themoviedb.org/3/movie/${category}?language=it-IT&page=${pageNum}`,
+                options
+            )
+            const data = await response.json()
+            
+            if (pageNum === 1) {
+                setMovies(data.results)
+            } else {
+                setMovies(prev => [...prev, ...data.results])
             }
-
+            
+            setHasMore(pageNum < data.total_pages)
+            setLoading(false)
         } catch (error) {
-            // Ignora l'errore se è un AbortError (chiamata interrotta da React Strict Mode)
-            if (error.name !== 'AbortError') {
-                console.error('Errore durante la fetch: ', error);
-            }
-        } finally {
-            // Imposta loading a false solo se non c'è stato abort (più pulito, ma lo teniamo semplice)
-            setLoading(false);
+            console.error('Errore nel caricamento dei film:', error)
+            setLoading(false)
         }
-    };
+    }
 
     const loadMore = () => {
-        if (!loading && hasMore) {
-            const nextPage = page + 1;
-            setPage(nextPage);
-            getMovies(nextPage);
-        }
-    };
+        const nextPage = page + 1
+        setPage(nextPage)
+        fetchMovies(nextPage, selectedCategory)
+    }
 
-    // 💡 SOLUZIONE ROBUSA AL BUG DELLA DOPPIA CHIAMATA
-    useEffect(() => {
-        // 1. Creiamo un AbortController per la pulizia
-        const controller = new AbortController();
-        const signal = controller.signal;
-
-        // 2. Eseguiamo la prima fetch (pagina 1)
-        // Passiamo 'true' per 'reset' e il 'signal'
-        getMovies(1, true, signal);
-
-        // 3. Funzione di Cleanup di useEffect:
-        // Se l'effect viene eseguito due volte (Strict Mode) o se il componente
-        // viene smontato, questa funzione viene chiamata e annulla la fetch in corso.
-        return () => {
-            controller.abort();
-            setLoading(false); // In caso di abort, resetta loading
-        };
-    }, []); // Array di dipendenze vuoto: si esegue solo al mount.
-
-    // Il resto della logica del componente (return) rimane invariato
+    const getCategoryName = () => {
+        const category = categories.find(cat => cat.endpoint === selectedCategory)
+        return category ? category.name : 'Film'
+    }
 
     return (
         <>
-            <Navbar />
-            <div className="movies-page">
-                <div>
-                    <h1>Esplora tutti i Film</h1>
-                    <div className="movies-grid">
-                        {movies.map((movie) => (
-                            <MovieCard movie={movie} key={movie.id} />
-                        ))}
-                    </div>
-
-                    {loading && <h3 className='loading-message'>Caricamento in corso...</h3>}
-
-                    {!loading && hasMore && (
-                        <button onClick={loadMore} className="load-more-btn">
-                            Carica Altri Film
+        <Navbar/>
+        <div className='movies-page'>
+            <div className="movies-header">
+                <h1>Film</h1>
+                <div className="category-tabs">
+                    {categories.map(category => (
+                        <button
+                            key={category.id}
+                            className={`tab-btn ${selectedCategory === category.endpoint ? 'active' : ''}`}
+                            onClick={() => setSelectedCategory(category.endpoint)}
+                        >
+                            {category.name}
                         </button>
-                    )}
-
-                    {!hasMore && !loading && movies.length > 0 && (
-                        <p className='end-message'>Hai raggiunto la fine dei risultati di TMDB.</p>
-                    )}
-
+                    ))}
                 </div>
             </div>
-            <Footer />
+
+            <div className="movies-count">
+                <p>{movies.length} {movies.length === 1 ? 'film' : 'film'} - {getCategoryName()}</p>
+            </div>
+
+            <div className="movies-grid">
+                {movies.map((movie, index) => (
+                    <MovieCard 
+                        key={`${movie.id}-${index}`} 
+                        movie={movie}
+                        showNewBadge={selectedCategory === 'now_playing' || selectedCategory === 'upcoming'}
+                    />
+                ))}
+            </div>
+
+            {loading && (
+                <div className="loading-spinner">
+                    <div className="spinner"></div>
+                    <p>Caricamento...</p>
+                </div>
+            )}
+
+            {!loading && hasMore && movies.length > 0 && (
+                <div className="load-more">
+                    <button className="load-more-btn" onClick={loadMore}>
+                        Carica Altri Film
+                    </button>
+                </div>
+            )}
+
+            {!loading && movies.length === 0 && (
+                <div className="no-results">
+                    <p>Nessun film trovato</p>
+                </div>
+            )}
+        </div>
+        <Footer/>
         </>
     )
 }
 
-export default Movies;
+export default Movies
