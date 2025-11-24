@@ -15,17 +15,22 @@
 
 .card-list::-webkit-scrollbar {
     display: none;
-
 }
 
 .card-list img {
     width: 240px;
     border-radius: 4px;
     cursor: pointer;
+    transition: transform 0.3s ease;
 }
 
 .card-list .card {
     position: relative;
+}
+
+.card-list .card:hover img {
+    transform: scale(1.05);
+    filter: brightness(0.5);
 }
 
 .card-list .card p {
@@ -34,6 +39,70 @@
     right: 10px;
     text-decoration: none;
     color: #fff;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+/* Overlay con icone */
+.card-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+}
+
+.card:hover .card-overlay {
+    opacity: 1;
+    pointer-events: all;
+}
+
+.icon-button {
+    background: rgba(255, 255, 255, 0.9);
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    z-index: 10;
+}
+
+.icon-button:hover {
+    background: #fff;
+    transform: scale(1.1);
+}
+
+.icon-button svg {
+    width: 20px;
+    height: 20px;
+    color: #000;
+}
+
+.icon-button.favorite {
+    background: rgba(229, 9, 20, 0.9);
+}
+
+.icon-button.favorite:hover {
+    background: rgb(229, 9, 20);
+}
+
+.icon-button.favorite svg {
+    color: #fff;
+}
+
+.icon-button.favorite.added svg {
+    fill: #fff;
 }
 
 @media (max-width: 800px) {
@@ -54,10 +123,18 @@
         font-size: 12px;
     }
 
+    .icon-button {
+        width: 35px;
+        height: 35px;
+    }
+
+    .icon-button svg {
+        width: 18px;
+        height: 18px;
+    }
 }
 
-@media (max-width: 800px) {
-
+@media (max-width: 600px) {
     .title-cards h2 {
         font-size: 15px;
     }
@@ -70,4 +147,13 @@
         font-size: 10px;
     }
 
+    .icon-button {
+        width: 30px;
+        height: 30px;
+    }
+
+    .icon-button svg {
+        width: 16px;
+        height: 16px;
+    }
 }
