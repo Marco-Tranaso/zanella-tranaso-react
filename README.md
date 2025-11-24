@@ -38,3 +38,7 @@ zanella-tranaso-react/
 ```
 
 ## Pagine:
+
+## Consegna: 
+caricare sulla FAD il link della repo gitHub (se privata, invitare la prof con la mail della scuola) + caricare zip progetto senza node_modules.
+IMPORTANTE: consegnare in tempo. 
