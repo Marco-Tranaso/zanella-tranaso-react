@@ -5,12 +5,12 @@ import bell_icon from '../../assets/bell_icon.svg'
 import profile_img from '../../assets/profile_img.png'
 import caret_icon from '../../assets/caret_icon.svg'
 import { Link } from 'react-router-dom'
-import SearchBar from '../SearchBar/SearchBar'   
+import SearchBar from '../SearchBar/SearchBar'
 
 const Navbar = () => {
 
   const navRef = useRef();
-  
+
   useEffect(() => {
     window.addEventListener('scroll', () => {
       if (window.scrollY >= 80) {
@@ -34,7 +34,9 @@ const Navbar = () => {
             <li>Movies</li>
           </Link>
           <li>New & Popular</li>
-          <li>My List</li>
+          <Link to="/favorites">
+            <li>My List</li>
+          </Link>
           <li>Browse by Languages</li>
         </ul>
       </div>

@@ -4,6 +4,7 @@ import { Routes, Route } from 'react-router-dom'
 import Login from './pages/Login/Login'
 import Player from './pages/Player/Player'
 import Movies from './pages/Movies/Movies'
+import Favorites from './pages/Favorites/Favorites'
 
 const App = () => {
   return (
@@ -13,6 +14,7 @@ const App = () => {
         <Route path='/login' element={<Login/>}/>
         <Route path='/player/:id' element={<Player/>}/>
         <Route path='/movies' element={<Movies/>}/>
+        <Route path="/favorites" element={<Favorites />} />
       </Routes>
       
     </div>
