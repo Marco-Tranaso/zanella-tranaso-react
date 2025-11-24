@@ -5,7 +5,6 @@
     color: #fff;
 }
 
-/* Header */
 .movies-header {
     margin-bottom: 30px;
 }
@@ -16,7 +15,6 @@
     margin: 0 0 20px 0;
 }
 
-/* Category Tabs */
 .category-tabs {
     display: flex;
     gap: 10px;
@@ -46,7 +44,6 @@
     font-weight: 600;
 }
 
-/* Movies Count */
 .movies-count {
     margin-bottom: 20px;
 }
@@ -56,7 +53,6 @@
     font-size: 14px;
 }
 
-/* Movies Grid */
 .movies-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -64,7 +60,6 @@
     margin-bottom: 40px;
 }
 
-/* Loading Spinner */
 .loading-spinner {
     display: flex;
     flex-direction: column;
@@ -93,7 +88,6 @@
     font-size: 16px;
 }
 
-/* Load More Button */
 .load-more {
     display: flex;
     justify-content: center;
@@ -118,7 +112,6 @@
     transform: scale(1.05);
 }
 
-/* No Results */
 .no-results {
     text-align: center;
     padding: 80px 20px;
@@ -129,7 +122,6 @@
     font-size: 18px;
 }
 
-/* Responsive */
 @media (max-width: 1024px) {
     .movies-grid {
         grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
