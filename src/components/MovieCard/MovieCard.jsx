@@ -46,13 +46,16 @@ const MovieCard = ({ movie, showNewBadge = false }) => {
 
     return (
         <div className="movie-card">
-        
+
             <Link to={`/movie/${movie.id}`}>
                 <img
                     src={`https://image.tmdb.org/t/p/w500${movie.backdrop_path}`}
                     alt={movie.original_title || movie.title}
                     onError={(e) => {
-                        e.target.src = 'https://via.placeholder.com/500x281?text=Immagine+Non+Disponibile'
+
+                        if (e.target.src !== '/placeholder.webp') {
+                            e.target.src = '/placeholder.webp';
+                        }
                     }}
                 />
 
