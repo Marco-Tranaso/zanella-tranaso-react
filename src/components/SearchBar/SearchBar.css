@@ -1,64 +1,87 @@
 .search-wrapper {
   position: relative;
-  display: flex;
-  align-items: center;
 }
 
 .search-icon {
-  width: 22px;
+  width: 24px;
+  height: 24px;
   cursor: pointer;
 }
 
-.search-input {
-  width: 0;
-  opacity: 0;
-  padding: 0;
-  margin-left: 8px;
-  height: 32px;
-  border: none;
-  background: transparent;
-  border-bottom: 1px solid white;
-  color: white;
-  outline: none;
-  transition: width 0.2s ease, opacity 0.2s ease;
+.search-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0,0,0,0.95);
+  z-index: 10000;
+  display: flex;
+  flex-direction: column;
+  padding: 40px;
+  box-sizing: border-box;
+  overflow-y: auto;
 }
 
-.search-input.open {
-  width: 180px;
-  opacity: 1;
-  padding: 0 6px;
+.search-header {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 30px;
+}
+
+.search-header input {
+  flex: 1;
+  padding: 12px 20px;
+  font-size: 1.2rem;
+  border-radius: 6px;
+  border: none;
+  outline: none;
+  background-color: #222;
+  color: white;
+}
+
+.close-btn {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: white;
+  cursor: pointer;
 }
 
 .search-results {
-  position: absolute;
-  top: 40px;
-  right: 0;
-  width: 320px;
-  max-height: 330px;
-  background: #141414;
-  border-radius: 4px;
-  padding: 10px;
-  overflow-y: auto;
-  z-index: 1000;
-  box-shadow: 0px 2px 10px rgba(0,0,0,0.5);
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 20px;
 }
 
 .search-item {
   display: flex;
-  gap: 10px;
-  align-items: center;
-  padding: 8px;
-  cursor: pointer;
+  flex-direction: column;
+  text-decoration: none;
   color: white;
-}
-
-.search-item:hover {
-  background: #222;
+  cursor: pointer;
+  transition: transform 0.2s;
 }
 
 .search-item img {
-  width: 50px;
-  height: 70px;
+  width: 100%;
+  border-radius: 6px;
+  margin-bottom: 8px;
   object-fit: cover;
-  border-radius: 4px;
+}
+
+.search-item:hover {
+  transform: scale(1.05);
+}
+
+.search-item span {
+  font-size: 0.95rem;
+  text-align: center;
+}
+
+.no-results {
+  color: #ccc;
+  font-size: 1.2rem;
+  grid-column: 1 / -1;
+  text-align: center;
 }

@@ -5,6 +5,7 @@ import Login from './pages/Login/Login'
 import Player from './pages/Player/Player'
 import Movies from './pages/Movies/Movies'
 import Favorites from './pages/Favorites/Favorites'
+import MovieDetail from './pages/MovieDetail/MovieDetail'
 
 const App = () => {
   return (
@@ -15,6 +16,7 @@ const App = () => {
         <Route path='/player/:id' element={<Player/>}/>
         <Route path='/movies' element={<Movies/>}/>
         <Route path="/favorites" element={<Favorites />} />
+        <Route path='/movie/:id' element={<MovieDetail/>}/>
       </Routes>
       
     </div>

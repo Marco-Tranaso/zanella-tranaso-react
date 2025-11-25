@@ -34,20 +34,8 @@ const MovieCard = ({ movie, showNewBadge = false }) => {
         setIsFavorite(!isFavorite)
     }
 
-    const getRating = () => {
-        if (movie.vote_average) {
-            return movie.vote_average.toFixed(1)
-        }
-        return 'N/A'
-    }
-
-    const getYear = () => {
-        if (movie.release_date) {
-            return new Date(movie.release_date).getFullYear()
-        }
-        return ''
-    }
-
+    const getRating = () => movie.vote_average ? movie.vote_average.toFixed(1) : 'N/A'
+    const getYear = () => movie.release_date ? new Date(movie.release_date).getFullYear() : ''
     const isNew = () => {
         if (!movie.release_date) return false
         const releaseDate = new Date(movie.release_date)
@@ -58,7 +46,8 @@ const MovieCard = ({ movie, showNewBadge = false }) => {
 
     return (
         <div className="movie-card">
-            <Link to={`/player/${movie.id}`}>
+        
+            <Link to={`/movie/${movie.id}`}>
                 <img
                     src={`https://image.tmdb.org/t/p/w500${movie.backdrop_path}`}
                     alt={movie.original_title || movie.title}
@@ -96,11 +85,11 @@ const MovieCard = ({ movie, showNewBadge = false }) => {
                     </div>
 
                     <div className="movie-actions">
-                        <Link to={`/player/${movie.id}`} className="play-btn">
+                        <Link to={`/movie/${movie.id}`} className="play-btn">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
                                 <polygon points="5 3 19 12 5 21 5 3" />
                             </svg>
-                            Riproduci
+                            Dettagli
                         </Link>
                         <button
                             className={`action-btn favorite-btn ${isFavorite ? 'added' : ''}`}
@@ -113,7 +102,7 @@ const MovieCard = ({ movie, showNewBadge = false }) => {
                         </button>
 
                         <Link
-                            to={`/player/${movie.id}`}
+                            to={`/movie/${movie.id}`}
                             className="action-btn"
                             title="Maggiori informazioni"
                         >
