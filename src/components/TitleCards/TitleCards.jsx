@@ -71,7 +71,12 @@ const TitleCards = ({ title, category }) => {
               <img
                 src={`https://image.tmdb.org/t/p/w500${movie.backdrop_path}`}
                 alt={movie.original_title || movie.title}
-                onError={(e) => e.target.src = 'https://via.placeholder.com/500x281?text=Immagine+Non+Disponibile'}
+                onError={(e) => {
+
+                  if (e.target.src !== '/placeholder.webp') {
+                    e.target.src = '/placeholder.webp';
+                  }
+                }}
               />
               <p>{movie.original_title || movie.title}</p>
             </Link>
@@ -79,9 +84,9 @@ const TitleCards = ({ title, category }) => {
             <div className="card-overlay">
               <Link to={`/movie/${movie.id}`} className="icon-button" title="Informazioni">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <circle cx="12" cy="12" r="10"/>
-                  <line x1="12" y1="16" x2="12" y2="12"/>
-                  <line x1="12" y1="8" x2="12.01" y2="8"/>
+                  <circle cx="12" cy="12" r="10" />
+                  <line x1="12" y1="16" x2="12" y2="12" />
+                  <line x1="12" y1="8" x2="12.01" y2="8" />
                 </svg>
               </Link>
 
@@ -91,7 +96,7 @@ const TitleCards = ({ title, category }) => {
                 title={isFavorite(movie.id) ? "Rimuovi dai preferiti" : "Aggiungi ai preferiti"}
               >
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill={isFavorite(movie.id) ? "currentColor" : "none"} stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/>
+                  <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z" />
                 </svg>
               </button>
             </div>
