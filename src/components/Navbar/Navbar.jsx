@@ -26,20 +26,26 @@ const Navbar = () => {
       <div className="navbar-left">
         <Link to='/'>
           <img src={logo} alt="Netflix Logo" />
-        </Link>        
-        <ul>
-        <Link to='/'>
-          <li>Home</li>
         </Link>
-          <li>TV Shows</li>
+        <ul>
+          <Link to='/'>
+            <li>Home</li>
+          </Link>
+          <Link to='/tv-shows'>
+            <li>TV Shows</li>
+          </Link>
           <Link to='/movies'>
             <li>Movies</li>
           </Link>
-          <li>New & Popular</li>
+          <Link to='/new-popular'>
+            <li>New & Popular</li>
+          </Link>
           <Link to="/favorites">
             <li>My List</li>
           </Link>
-          <li>Browse by Languages</li>
+          <Link to='/languages'>
+            <li>Browse by Languages</li>
+          </Link>
         </ul>
       </div>
       <div className="navbar-right">
