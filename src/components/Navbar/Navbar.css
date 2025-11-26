@@ -33,6 +33,10 @@
     color: white;
 }
 
+.navbar-left ul a {
+    text-decoration: none;
+}
+
 .navbar-right {
     display: flex;
     gap: 20px;

@@ -1,0 +1,142 @@
+.notfound-container {
+  min-height: 100vh;
+  width: 100%;
+  background: linear-gradient(to bottom, #000000, #141414);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.notfound-content {
+  text-align: center;
+  max-width: 600px;
+  animation: fadeIn 0.8s ease-in;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.notfound-title {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+  color: white;
+}
+
+.notfound-code {
+  font-size: 8rem;
+  font-weight: 900;
+  color: #e50914;
+  text-shadow: 0 0 30px rgba(229, 9, 20, 0.5);
+  margin: 20px 0;
+  line-height: 1;
+}
+
+.notfound-message {
+  font-size: 1.5rem;
+  margin-bottom: 15px;
+  color: #e5e5e5;
+  font-weight: 500;
+}
+
+.notfound-submessage {
+  font-size: 1.1rem;
+  margin-bottom: 40px;
+  color: #b3b3b3;
+}
+
+.notfound-buttons {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  margin-bottom: 40px;
+  flex-wrap: wrap;
+}
+
+.notfound-btn {
+  padding: 12px 30px;
+  font-size: 1rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.notfound-btn.primary {
+  background-color: #e50914;
+  color: white;
+}
+
+.notfound-btn.primary:hover {
+  background-color: #f40612;
+  transform: scale(1.05);
+  box-shadow: 0 5px 15px rgba(229, 9, 20, 0.4);
+}
+
+.notfound-btn.secondary {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.notfound-btn.secondary:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.5);
+  transform: scale(1.05);
+}
+
+.notfound-links {
+  margin-top: 30px;
+  padding-top: 30px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.notfound-links p {
+  font-size: 0.9rem;
+  color: #808080;
+}
+
+.notfound-links strong {
+  color: #b3b3b3;
+  font-family: monospace;
+}
+
+@media (max-width: 768px) {
+  .notfound-title {
+    font-size: 1.5rem;
+  }
+
+  .notfound-code {
+    font-size: 5rem;
+  }
+
+  .notfound-message {
+    font-size: 1.2rem;
+  }
+
+  .notfound-submessage {
+    font-size: 1rem;
+  }
+
+  .notfound-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .notfound-btn {
+    width: 100%;
+    max-width: 250px;
+  }
+}
