@@ -26,9 +26,11 @@ const Navbar = () => {
       <div className="navbar-left">
         <Link to='/'>
           <img src={logo} alt="Netflix Logo" />
-        </Link>
+        </Link>        
         <ul>
+        <Link to='/'>
           <li>Home</li>
+        </Link>
           <li>TV Shows</li>
           <Link to='/movies'>
             <li>Movies</li>
