@@ -23,7 +23,7 @@ const Home = () => {
         <img src={hero_banner} alt="" className='banner-img' />
         <div className="hero-caption">
           <img src={hero_title} alt="" className='caption-img' />
-          <p>Akane Tendo incontra il suo nuovo fidanzato Ranma Saotome...</p>
+          <p>Akane Tendo incontra il suo nuovo fidanzato Ranma Saotome, un prodigio delle arti marziali con un segreto: si trasforma magicamente in una ragazza a contatto con l'acqua fredda.</p>
           <div className="hero-btns">
             <button className='btn' onClick={handlePlayClick}>
               <img src={play_icon} alt="" />Play
