@@ -6,6 +6,7 @@ import Player from './pages/Player/Player'
 import Movies from './pages/Movies/Movies'
 import Favorites from './pages/Favorites/Favorites'
 import MovieDetail from './pages/MovieDetail/MovieDetail'
+import Trailer from './pages/Ranma/Ranma'
 
 const App = () => {
   return (
@@ -17,6 +18,7 @@ const App = () => {
         <Route path='/movies' element={<Movies/>}/>
         <Route path="/favorites" element={<Favorites />} />
         <Route path='/movie/:id' element={<MovieDetail/>}/>
+        <Route path='/trailer' element={<Trailer/>}/>
       </Routes>
       
     </div>
