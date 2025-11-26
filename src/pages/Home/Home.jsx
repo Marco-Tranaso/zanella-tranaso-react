@@ -13,7 +13,7 @@ const Home = () => {
   const navigate = useNavigate();
 
   const handlePlayClick = () => {
-    navigate('/trailer'); 
+    navigate('/trailer');
   };
 
   return (
@@ -28,7 +28,7 @@ const Home = () => {
             <button className='btn' onClick={handlePlayClick}>
               <img src={play_icon} alt="" />Play
             </button>
-            <button className='btn dark-btn'>
+            <button className='btn dark-btn' onClick={() => navigate('/ranma-detail')}>
               <img src={info_icon} alt="" />More Info
             </button>
           </div>

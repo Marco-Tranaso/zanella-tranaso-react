@@ -7,6 +7,7 @@ import Movies from './pages/Movies/Movies'
 import Favorites from './pages/Favorites/Favorites'
 import MovieDetail from './pages/MovieDetail/MovieDetail'
 import Trailer from './pages/Ranma/Ranma'
+import RanmaDetail from './pages/Ranma/RanmaDetail';
 
 const App = () => {
   return (
@@ -18,6 +19,7 @@ const App = () => {
         <Route path='/movies' element={<Movies/>}/>
         <Route path="/favorites" element={<Favorites />} />
         <Route path='/movie/:id' element={<MovieDetail/>}/>
+        <Route path="/ranma-detail" element={<RanmaDetail />} />
         <Route path='/trailer' element={<Trailer/>}/>
       </Routes>
       

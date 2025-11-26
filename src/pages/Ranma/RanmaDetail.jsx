@@ -7,7 +7,7 @@ import poster_ranma from '../../assets/poster-ranma.avif';
 const RanmaDetail = () => {
   const navigate = useNavigate();
 
-  // Dati locali di Ranma
+
   const ranmaData = {
     title: "Ranma ½",
     originalTitle: "らんま½",
