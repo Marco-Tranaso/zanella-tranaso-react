@@ -34,7 +34,6 @@
     border-color: #fff;
 }
 
-/* Empty State */
 .empty-state {
     display: flex;
     flex-direction: column;
@@ -78,7 +77,6 @@
     background: #f40612;
 }
 
-/* Favorites Grid */
 .favorites-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -130,7 +128,6 @@
     color: rgba(255, 255, 255, 0.6);
 }
 
-/* Remove Button */
 .remove-btn {
     position: absolute;
     top: 10px;
@@ -164,13 +161,11 @@
     color: #fff;
 }
 
-/* Hover Overlay */
 .hover-overlay {
     position: absolute;
     bottom: -10px;
     left: 155px;
     right: 0;
-    /* background: linear-gradient(to top, rgba(0,0,0,0.9), transparent); */
     padding: 20px 15px;
     opacity: 0;
     transition: opacity 0.3s ease;
@@ -206,7 +201,6 @@
     height: 20px;
 }
 
-/* Favorites Count */
 .favorites-count {
     text-align: center;
     padding: 20px 0;
@@ -217,7 +211,6 @@
     font-size: 14px;
 }
 
-/* Responsive */
 @media (max-width: 1024px) {
     .favorites-grid {
         grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
