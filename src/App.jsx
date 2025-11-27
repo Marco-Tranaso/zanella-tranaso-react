@@ -25,7 +25,6 @@ const App = () => {
         <Route path='/trailer' element={<Trailer />} />
         <Route path="/tv-shows" element={<NotFound />} />
         <Route path="/new-popular" element={<NotFound />} />
-        <Route path="/languages" element={<NotFound />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </div>
