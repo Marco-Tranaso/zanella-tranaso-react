@@ -32,25 +32,22 @@ const Navbar = () => {
             <li>Home</li>
           </Link>
           <Link to='/tv-shows'>
-            <li>TV Shows</li>
+            <li>Serie</li>
           </Link>
           <Link to='/movies'>
-            <li>Movies</li>
+            <li>Film</li>
           </Link>
           <Link to='/new-popular'>
             <li>New & Popular</li>
           </Link>
           <Link to="/favorites">
-            <li>My List</li>
-          </Link>
-          <Link to='/languages'>
-            <li>Browse by Languages</li>
+            <li>Il mio Netflix</li>
           </Link>
         </ul>
       </div>
       <div className="navbar-right">
         <SearchBar />
-        <p>Children</p>
+        <p>Bambini</p>
         <img src={bell_icon} alt="bell icon" className='icons' />
 
         <div className="navbar-profile">
@@ -58,7 +55,7 @@ const Navbar = () => {
           <img src={caret_icon} alt="caret icon" />
           <div className="dropdown">
             <Link to='/login'>
-              <p>Sign Out</p>
+              <p>Esci da Netflix</p>
             </Link>
           </div>
         </div>

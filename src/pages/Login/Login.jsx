@@ -5,32 +5,32 @@ import { useState } from 'react'
 import { Link } from 'react-router-dom'
 
 const Login = () => {
-  const [signState, setSignState] = useState("Sign In")
+  const [statoAccesso, setStatoAccesso] = useState("Accedi")
 
   return (
     <div className='login'>
       <Link to='/'>
-      <img src={logo} className='login-logo' alt="" />
+      <img src={logo} className='login-logo' alt="Logo Netflix" />
       </Link>
       <div className="login-form">
-        <h1>{signState}</h1>
+        <h1>{statoAccesso}</h1>
         <form >
-          {signState === "Sign Up" ? <input type="text" placeholder='Yourn name' /> : <></>}
+          {statoAccesso === "Registrati" ? <input type="text" placeholder='Il tuo nome' /> : <></>}
           <input type="email" placeholder='Email' />
           <input type="password" placeholder='Password' />
-          <button>{signState}</button>
+          <button>{statoAccesso}</button>
           <div className="form-help">
             <div className="remember">
               <input type="checkbox" />
-              <label htmlFor="">Remember Me</label>
+              <label htmlFor="">Ricordami</label>
             </div>
-            <p>Need Help?</p>
+            <p>Serve aiuto?</p>
           </div>
         </form>
         <div className="form-switch">
-          {signState === "Sign In" ? 
-          <p>New to Netflix? <span onClick={()=>{setSignState("Sign Up")}}>Sign Up Now</span></p> 
-          : <p>Already have account? <span onClick={()=>{setSignState("Sign In")}}>Sign In Now</span></p>  }
+          {statoAccesso === "Accedi" ? 
+          <p>Nuovo su Netflix? <span onClick={()=>{setStatoAccesso("Registrati")}}>Registrati Ora</span></p> 
+          : <p>Hai già un account? <span onClick={()=>{setStatoAccesso("Accedi")}}>Accedi Ora</span></p>  }
         </div>
       </div>
     </div>
